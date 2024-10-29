@@ -2,11 +2,29 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpRequest
 from .models import Product
 from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
+from django.views.generic import (
+    ListView,
+    DetailView,
+    CreateView,
+    UpdateView,
+    DeleteView,
+    TemplateView,
+)
 
 
 class ContactsView(TemplateView):
     template_name = "catalog/contacts.html"
+
+    def contacts(self, request):
+        """Обрабатываем форму и возвращаем ответ"""
+        if self.request.method == "POST":
+            name = request.POST.get("name")
+            phone = request.POST.get("phone")
+            message = request.POST.get("message")
+            return HttpResponse(
+                f"Спасибо, {name}, за Ваше сообщение! Наши специалисты скоро свяжутся с Вами по номеру телефона {phone}!"
+            )
+        return render(request, "contacts.html")
 
 
 class ProductListView(ListView):
@@ -34,6 +52,7 @@ class ProductDeleteView(DeleteView):
     template_name = "catalog/product_confirm_delete.html"
     success_url = reverse_lazy("catalog:product_list")
 
+
 #
 # def product_list(request: HttpRequest):
 #     """функция обрабатывает запрос и возвращает html-страницу"""
@@ -44,16 +63,16 @@ class ProductDeleteView(DeleteView):
 #         return render(request, "product_list.html", context=context)
 #
 
-def contacts(request):
-    """Обрабатываем форму и возвращаем ответ"""
-    if request.method == "POST":
-        name = request.POST.get("name")
-        phone = request.POST.get("phone")
-        message = request.POST.get("message")
-        return HttpResponse(
-            f"Спасибо, {name}, за Ваше сообщение! Наши специалисты скоро свяжутся с Вами по номеру телефона {phone}!"
-        )
-    return render(request, "contacts.html")
+# def contacts(request):
+#     """Обрабатываем форму и возвращаем ответ"""
+#     if request.method == "POST":
+#         name = request.POST.get("name")
+#         phone = request.POST.get("phone")
+#         message = request.POST.get("message")
+#         return HttpResponse(
+#             f"Спасибо, {name}, за Ваше сообщение! Наши специалисты скоро свяжутся с Вами по номеру телефона {phone}!"
+#         )
+#     return render(request, "contacts.html")
 
 
 # def product_detail(request, pk: int):

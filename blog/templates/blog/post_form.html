@@ -1,14 +1,14 @@
-{% extends 'catalog/base.html' %}
+{% extends 'blog/base.html' %}
 {% load my_tags %}
 {% block title %}
-  <title>Добавление продукта</title>
+  <title>Добавление поста</title>
 {% endblock %}
 
 {% block content %}
 
 <div class="container mt-5">
         <h1 class="mb-4">
-            {% if product %}
+            {% if post %}
             Форма изменения продукта
             {% else %}
             Форма создания продукта
@@ -18,13 +18,13 @@
             {% csrf_token %}
             {{ form.as_p }}
             <button type="submit" class="btn btn-primary">
-                {% if product %}
+                {% if post %}
                 Сохранить
                 {% else %}
                 Создать
                 {% endif %}
             </button>
-            <a href="{% url 'catalog:product_list' %}" class="btn btn-secondary">Отмена</a>
+            <a href="{% url 'blog:post_list' %}" class="btn btn-secondary">Отмена</a>
         </form>
     </div>
 
