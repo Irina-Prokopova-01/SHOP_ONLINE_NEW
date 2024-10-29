@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'catalog/base.html' %}
 {% load my_tags %}
 {% block title %} Продукты {% endblock %}
 
@@ -9,25 +9,26 @@
         <div class="col">
           <div class="card shadow-sm">
               <div class="card-header">
-                  <h4 class="my-0 font-weight-normal text-center">{{ product.title }}</h4>
+                  <h4 class="my-0 font-weight-normal text-center">{{ object.title }}</h4>
               </div>
               <img src="{{ product.image | media_filter }}" width="100%" height="250">
               <div class="card-body">
-                <h1 class="card-title pricing-card-title">{{ product.price }} рублей</h1>
+                <h1 class="card-title pricing-card-title">{{ object.price }} рублей</h1>
                 <ul class="list-unstyled mt-3 mb-4 text-start m-3">
-                    <li>- Дата создания: {{ product.created_at | date:"d M Y"}}</li>
-                    <li>- Категория продукта: {{ product.category }}</li>
-                    <li>- Описание продукта: {{ product.description | truncatechars:100 }}</li>
-                    <li>- Последнее обновление: {{ product.updated_at | date:"d M Y"}}</li>
+                    <li>- Категория продукта: {{ object.category }}</li>
+                    <li>- Описание продукта: {{ object.description }}</li>
                 </ul>
               <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                         <a class="btn btn-lg btn-block btn-outline-primary" href="#" role="button">Купить</a>
                     </div>
-
+                    <div class="btn-group">
+                        <a class="btn btn-lg btn-block btn-outline-primary" href="{% url 'catalog:product_delete' product.pk %}" role="button">Удалить</a>
+                    </div>
                     <div class="btn-group">
                         <a class="btn btn-lg btn-block btn-outline-primary" href="{% url 'catalog:product_list' %}" role="button">Назад</a>
                     </div>
+
               </div>
             </div>
           </div>

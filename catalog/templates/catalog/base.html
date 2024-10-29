@@ -10,9 +10,12 @@
 
 </head>
 <body>
-{% include 'includes/inc_menu.html' %}
+{% include 'catalog/includes/inc_menu.html' %}
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
     <h1 class="display-4">ФЕРМЕРСКИЕ ПРОДУКТЫ</h1>
+     <div class="btn-group">
+         <a class="btn btn-lg btn-block btn-outline-primary" href="{% url 'catalog:product_create' %}" role="button">Создать</a>
+     </div>
     <p class="lead">доставка за 2 часа</p>
 </div>
 {% block content %}{% endblock %}

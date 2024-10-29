@@ -1,0 +1,83 @@
+[
+{
+    "model": "catalog.category",
+    "pk": 9,
+    "fields": {
+        "title": "птица",
+        "description": "просто птица"
+    }
+},
+{
+    "model": "catalog.category",
+    "pk": 10,
+    "fields": {
+        "title": "овощи",
+        "description": "Овощи фермерские"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 19,
+    "fields": {
+        "title": "бедро куринное",
+        "description": "Свежее",
+        "image": "",
+        "category": 9,
+        "price": 400.0,
+        "created_at": "2024-10-17",
+        "updated_at": "2024-10-17"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 20,
+    "fields": {
+        "title": "голени куринные",
+        "description": "Свежее",
+        "image": "",
+        "category": 9,
+        "price": 300.0,
+        "created_at": "2024-10-17",
+        "updated_at": "2024-10-17"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 21,
+    "fields": {
+        "title": "огурцы",
+        "description": "Короткоплодные",
+        "image": "images/огурцы.jpg",
+        "category": 10,
+        "price": 200.0,
+        "created_at": "2024-10-22",
+        "updated_at": "2024-10-22"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 23,
+    "fields": {
+        "title": "помидоры",
+        "description": "Помидоры на ветке",
+        "image": "images/помидоры.jpeg",
+        "category": 10,
+        "price": 300.0,
+        "created_at": "2024-10-22",
+        "updated_at": "2024-10-22"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 24,
+    "fields": {
+        "title": "картофель",
+        "description": "",
+        "image": "images/картофель.jpg",
+        "category": 10,
+        "price": 100.0,
+        "created_at": "2024-10-28",
+        "updated_at": "2024-10-28"
+    }
+}
+]
