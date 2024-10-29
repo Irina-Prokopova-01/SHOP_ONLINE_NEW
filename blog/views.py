@@ -15,16 +15,16 @@ from django.views.generic import (
 class ContactsView(TemplateView):
     template_name = "blog/contacts.html"
 
-    # def contacts(self, request):
-    #     """Обрабатываем форму и возвращаем ответ"""
-    #     if self.request.method == "POST":
-    #         name = request.POST.get("name")
-    #         phone = request.POST.get("phone")
-    #         message = request.POST.get("message")
-    #         return HttpResponse(
-    #             f"Спасибо, {name}, за Ваше сообщение! Наши специалисты скоро свяжутся с Вами по номеру телефона {phone}!"
-    #         )
-    #     return render(request, "contacts.html")
+    def contacts(self, request):
+        """Обрабатываем форму и возвращаем ответ"""
+        if self.request.method == "POST":
+            name = request.POST.get("name")
+            phone = request.POST.get("phone")
+            message = request.POST.get("message")
+            return HttpResponse(
+                f"Спасибо, {name}, за Ваше сообщение! Наши специалисты скоро свяжутся с Вами по номеру телефона {phone}!"
+            )
+        return render(request, "contacts.html")
 
 
 class PostListView(ListView):

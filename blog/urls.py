@@ -13,10 +13,10 @@ from blog.views import (
 app_name = BlogConfig.name
 
 urlpatterns = [
-    path("blogs", PostListView.as_view(), name="post_list"),
-    path("blogs/contacts/", ContactsView.as_view(), name="contacts"),
-    path("blogs/post/<int:pk>/", PostDetailView.as_view(), name="post_detail"),
-    path("blogs/post/create", PostCreateView.as_view(), name="post_create"),
-    path("blogs/post/<int:pk>/update/", PostUpdateView.as_view(), name="post_update"),
-    path("blogs/post/<int:pk>/delete/", PostDeleteView.as_view(), name="post_delete"),
+    path("post", PostListView.as_view(), name="post_list"),
+    path("post/contacts/", ContactsView.as_view(), name="contacts"),
+    path("post/<int:pk>/", PostDetailView.as_view(), name="post_detail"),
+    path("post/create", PostCreateView.as_view(), name="post_create"),
+    path("post/<int:pk>/update/", PostUpdateView.as_view(), name="post_update"),
+    path("post/<int:pk>/delete/", PostDeleteView.as_view(), name="post_delete"),
 ]
