@@ -47,6 +47,11 @@ class Product(models.Model):
     price = models.FloatField(verbose_name="Цена", help_text="Введите цену продукта")
     created_at = models.DateField(auto_now_add=True, verbose_name="Дата создания")
     updated_at = models.DateField(auto_now=True, verbose_name="Дата изменения")
+    view_counter = models.PositiveIntegerField(
+        verbose_name="Счетчик просмотров",
+        default=0,
+        help_text="Укажите кол-во просмотров",
+    )
 
     def __str__(self):
         return f"{self.title} {self.price}"

@@ -34,6 +34,12 @@ class ProductListView(ListView):
 class ProductDetailView(DetailView):
     model = Product
 
+    def get_object(self, queryset=None):
+        self.object = super().get_object(queryset)
+        self.object.view_counter += 1
+        self.object.save()
+        return self.object
+
 
 class ProductCreateView(CreateView):
     model = Product
@@ -45,6 +51,9 @@ class ProductUpdateView(UpdateView):
     model = Product
     fields = ("title", "description", "price", "image", "category")
     success_url = reverse_lazy("catalog:product_list")
+
+    def get_success_url(self):
+        return reverse_lazy("catalog:product_detail", kwargs={"pk": self.object.pk})
 
 
 class ProductDeleteView(DeleteView):
