@@ -3,23 +3,26 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Продукты</title>
+    <title>БЛОГ</title>
     {% block title %}{% endblock %}
     <link rel="stylesheet" href="/static/css/bootstrap.min.css">
     <!-- Подключите статичеcкие файлы со стилями Bootstrap -->
 
 </head>
 <body>
-{% include 'includes/inc_menu.html' %}
+{% include 'blog/includes/inc_menu.html' %}
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-    <h1 class="display-4">ФЕРМЕРСКИЕ ПРОДУКТЫ</h1>
-    <p class="lead">доставка за 2 часа</p>
+    <h1 class="display-4">БЛОГ</h1>
+     <div class="btn-group">
+         <a class="btn btn-lg btn-block btn-outline-primary" href="{% url 'catalog:product_create' %}" role="button">Создать</a>
+     </div>
+    <p class="lead">Самые интересные статьи здесь!</p>
 </div>
 {% block content %}{% endblock %}
     <footer class="pt-4 my-md-5 pt-md-5 border-top">
         <div class="row">
             <div class="col-12 col-md">
-                Продуктовый
+                Блог
                 <small class="d-block mb-3 text-muted">&copy; 2024</small>
             </div>
             <div class="col-6 col-md">
@@ -33,13 +36,13 @@
             <div class="col-6 col-md">
                 <h5>Дополнительно</h5>
                 <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="#">Мы пишем</a></li>
+                    <li><a class="text-muted" href="{% url 'blog:post_list' %}">Мы пишем</a></li>
                 </ul>
             </div>
             <div class="col-6 col-md">
                 <h5>О нас</h5>
                 <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="{% url 'catalog:contacts' %}">Контакты</a></li>
+                    <li><a class="text-muted" href="{% url 'blog:contacts' %}">Контакты</a></li>
                 </ul>
             </div>
         </div>

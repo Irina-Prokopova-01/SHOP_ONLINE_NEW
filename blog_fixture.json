@@ -1,0 +1,57 @@
+[
+{
+    "model": "catalog.category",
+    "pk": 9,
+    "fields": {
+        "title": "птица",
+        "description": "просто птица"
+    }
+},
+{
+    "model": "catalog.category",
+    "pk": 10,
+    "fields": {
+        "title": "овощи",
+        "description": "Овощи фермерские"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 25,
+    "fields": {
+        "title": "Помидоры",
+        "description": "Фермерский продукт",
+        "image": "images/помидоры.jpeg",
+        "category": 10,
+        "price": 300.0,
+        "created_at": "2024-10-28",
+        "updated_at": "2024-10-28"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 26,
+    "fields": {
+        "title": "Картофель",
+        "description": "Фермерский продукт",
+        "image": "images/картофель_HHvqn3B.jpg",
+        "category": 10,
+        "price": 150.0,
+        "created_at": "2024-10-28",
+        "updated_at": "2024-10-29"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 27,
+    "fields": {
+        "title": "Огурцы",
+        "description": "Фермерский продукт",
+        "image": "images/огурцы.jpg",
+        "category": 10,
+        "price": 250.0,
+        "created_at": "2024-10-28",
+        "updated_at": "2024-10-28"
+    }
+}
+]

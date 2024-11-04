@@ -1,4 +1,4 @@
-## ONLINE SHOP HW
+## ONLINE SHOP 
 
 #Описание:
 Проект он-лайн магазина. Реализован функциональный вид следующих страниц:
@@ -10,7 +10,7 @@
 
 # Установка:
 * Клонируйте репозиторий:
-https://github.com/Irina-Prokopova-01/Online_shop_HW
+https://github.com/Irina-Prokopova-01/SHOP_ONLINE_NEW
 * Установите зависимости:
 poetry add django
 # Использование:
