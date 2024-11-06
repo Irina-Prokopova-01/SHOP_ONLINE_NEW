@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpRequest
 from .models import Post
+from .forms import PostForm
 from django.urls import reverse_lazy
 from django.views.generic import (
     ListView,
@@ -15,17 +16,17 @@ from django.views.generic import (
 class ContactsView(TemplateView):
     template_name = "blog/contacts.html"
 
-    # def contacts(self, request, *args, **kwargs):
-    #     """Обрабатываем форму и возвращаем ответ"""
-    #     if self.request.method == "POST":
-    #         name = request.POST.get("name")
-    #         phone = request.POST.get("phone")
-    #         message = request.POST.get("message")
-    #         return HttpResponse(
-    #             f"Спасибо, {name}, за Ваше сообщение! Наши специалисты скоро свяжутся с Вами по номеру телефона {phone}!"
-    #         )
-    #     return render(request, "contacts.html")
-    #
+    def contacts(self, request, *args, **kwargs):
+        """Обрабатываем форму и возвращаем ответ"""
+        if self.request.method == "POST":
+            name = request.POST.get("name")
+            phone = request.POST.get("phone")
+            message = request.POST.get("message")
+            return HttpResponse(
+                f"Спасибо, {name}, за Ваше сообщение! Наши специалисты скоро свяжутся с Вами по номеру телефона {phone}!"
+            )
+        return render(request, "contacts.html")
+
 
 class PostListView(ListView):
     model = Post
@@ -46,13 +47,15 @@ class PostDetailView(DetailView):
 
 class PostCreateView(CreateView):
     model = Post
-    fields = ("title", "text", "image", "publication_sign")
+    form_class = PostForm
+    # fields = ("title", "text", "image", "publication_sign")
     success_url = reverse_lazy("blog:post_list")
 
 
 class PostUpdateView(UpdateView):
     model = Post
-    fields = ("title", "text", "image", "publication_sign")
+    form_class = PostForm
+    # fields = ("title", "text", "image", "publication_sign")
     success_url = reverse_lazy("blog:post_list")
 
     def get_success_url(self):

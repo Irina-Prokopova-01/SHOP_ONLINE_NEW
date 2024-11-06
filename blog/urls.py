@@ -13,7 +13,7 @@ from blog.views import (
 app_name = BlogConfig.name
 
 urlpatterns = [
-    path("post", PostListView.as_view(), name="post_list"),
+    path("post/", PostListView.as_view(), name="post_list"),
     path("post/contacts/", ContactsView.as_view(), name="contacts"),
     path("post/<int:pk>/", PostDetailView.as_view(), name="post_detail"),
     path("post/create/", PostCreateView.as_view(), name="post_create"),
