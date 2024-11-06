@@ -14,6 +14,7 @@ forbidden_words = [
     "радар",
 ]
 
+
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
