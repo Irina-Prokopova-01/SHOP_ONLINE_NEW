@@ -31,6 +31,7 @@ class ContactsView(TemplateView):
 
 class ProductListView(LoginRequiredMixin, ListView):
     model = Product
+    template_name = "catalog/product_list.html"
 
 
 class ProductDetailView(LoginRequiredMixin, DetailView):

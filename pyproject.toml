@@ -12,6 +12,7 @@ python-dotenv = "^1.0.1"
 pillow = "^11.0.0"
 ipython = "^8.29.0"
 django = "4.2.2"
+django-registration = "^5.1.0"
 
 
 [tool.poetry.group.lint.dependencies]
