@@ -1,6 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, HttpRequest
 from .models import Product
+from django.http import HttpResponseForbidden
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from .forms import ProductForm
 from django.views.generic import (
@@ -10,6 +12,7 @@ from django.views.generic import (
     UpdateView,
     DeleteView,
     TemplateView,
+    View,
 )
 
 
@@ -28,11 +31,17 @@ class ContactsView(TemplateView):
         return render(request, "contacts.html")
 
 
-class ProductListView(ListView):
+class ProductListView(LoginRequiredMixin, ListView):
     model = Product
+    template_name = "catalog/product_list.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["published_products"] = Product.objects.filter(publish_status=True)
+        return context
 
 
-class ProductDetailView(DetailView):
+class ProductDetailView(LoginRequiredMixin, DetailView):
     model = Product
 
     def get_object(self, queryset=None):
@@ -42,23 +51,55 @@ class ProductDetailView(DetailView):
         return self.object
 
 
-class ProductCreateView(CreateView):
+class ProductCreateView(LoginRequiredMixin, CreateView):
     model = Product
     form_class = ProductForm
     success_url = reverse_lazy("catalog:product_list")
+    login_url = reverse_lazy("users:login")
+
+    def form_valid(self, form):
+        product = form.save()
+        user = self.request.user
+        product.owner = user
+        product.save()
+        return super().form_valid(form)
 
 
-class ProductUpdateView(UpdateView):
+class ProductUpdateView(LoginRequiredMixin, UpdateView):
+    def post(self, request, pk):
+        product = get_object_or_404(Product, pk=pk)
+        if self.request.user != product.owner:
+            return HttpResponseForbidden("У вас не достаточно прав.")
+
     model = Product
     form_class = ProductForm
     success_url = reverse_lazy("catalog:product_list")
+    login_url = reverse_lazy("users:login")
 
     def get_success_url(self):
         return reverse_lazy("catalog:product_detail", kwargs={"pk": self.object.pk})
 
 
-class ProductDeleteView(DeleteView):
+class ProductDeleteView(LoginRequiredMixin, DeleteView):
+    def post(self, request, pk):
+        product = get_object_or_404(Product, pk=pk)
+        if (
+            not self.request.user.has_perm("delete_product")
+            or self.request.user != product.owner
+        ):
+            return HttpResponseForbidden("У вас не достаточно прав.")
+
     model = Product
     template_name = "catalog/product_confirm_delete.html"
     success_url = reverse_lazy("catalog:product_list")
 
+
+class UnpublishProductView(LoginRequiredMixin, View):
+    def post(self, request, pk):
+        product = get_object_or_404(Product, pk=pk)
+        if not request.user.has_perm("can_unpublish_product"):
+            return HttpResponseForbidden("У вас не достаточно прав.")
+
+        product.publish_status = False
+        product.save()
+        return redirect("catalog:product_list")
