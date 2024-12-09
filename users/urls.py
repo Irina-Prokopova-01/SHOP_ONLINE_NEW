@@ -1,6 +1,9 @@
 from django.urls import path
 from django.contrib.auth.views import LoginView, LogoutView
-from .views import UserCreateView, email_verification
+from .views import (
+    UserCreateView,
+    email_verification
+)
 from users.apps import UsersConfig
 
 app_name = UsersConfig.name

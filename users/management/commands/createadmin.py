@@ -11,7 +11,7 @@ class Command(BaseCommand):
             first_name='Irina',
             last_name='Prokopova'
         )
-        user.set_password('123456')
+        user.set_password('123reinmen!')
         user.is_staff = True
         user.is_superuser = True
         user.save()

@@ -17,67 +17,66 @@
 },
 {
     "model": "catalog.product",
-    "pk": 19,
+    "pk": 25,
     "fields": {
-        "title": "бедро куринное",
-        "description": "Свежее",
-        "image": "",
-        "category": 9,
-        "price": 400.0,
-        "created_at": "2024-10-17",
-        "updated_at": "2024-10-17"
-    }
-},
-{
-    "model": "catalog.product",
-    "pk": 20,
-    "fields": {
-        "title": "голени куринные",
-        "description": "Свежее",
-        "image": "",
-        "category": 9,
-        "price": 300.0,
-        "created_at": "2024-10-17",
-        "updated_at": "2024-10-17"
-    }
-},
-{
-    "model": "catalog.product",
-    "pk": 21,
-    "fields": {
-        "title": "огурцы",
-        "description": "Короткоплодные",
-        "image": "images/огурцы.jpg",
-        "category": 10,
-        "price": 200.0,
-        "created_at": "2024-10-22",
-        "updated_at": "2024-10-22"
-    }
-},
-{
-    "model": "catalog.product",
-    "pk": 23,
-    "fields": {
-        "title": "помидоры",
-        "description": "Помидоры на ветке",
+        "title": "Помидоры",
+        "description": "Фермерский продукт",
         "image": "images/помидоры.jpeg",
         "category": 10,
+        "publish_status": false,
+        "owner": null,
         "price": 300.0,
-        "created_at": "2024-10-22",
-        "updated_at": "2024-10-22"
+        "created_at": "2024-10-28",
+        "updated_at": "2024-10-29",
+        "view_counter": 1
     }
 },
 {
     "model": "catalog.product",
-    "pk": 24,
+    "pk": 26,
     "fields": {
-        "title": "картофель",
-        "description": "",
-        "image": "images/картофель.jpg",
+        "title": "Картофель",
+        "description": "Фермерский продукт",
+        "image": "images/картофель_HHvqn3B.jpg",
         "category": 10,
-        "price": 100.0,
+        "publish_status": false,
+        "owner": null,
+        "price": 200.0,
         "created_at": "2024-10-28",
-        "updated_at": "2024-10-28"
+        "updated_at": "2024-11-13",
+        "view_counter": 10
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 27,
+    "fields": {
+        "title": "Огурцы",
+        "description": "Фермерский продукт",
+        "image": "images/огурцы.jpg",
+        "category": 10,
+        "publish_status": false,
+        "owner": null,
+        "price": 250.0,
+        "created_at": "2024-10-28",
+        "updated_at": "2024-10-29",
+        "view_counter": 3
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 30,
+    "fields": {
+        "title": "Перец",
+        "description": "Фермерский продукт",
+        "image": "",
+        "category": 10,
+        "publish_status": false,
+        "owner": null,
+        "price": 150.0,
+        "created_at": "2024-11-05",
+        "updated_at": "2024-11-05",
+        "view_counter": 6
     }
 }
 ]

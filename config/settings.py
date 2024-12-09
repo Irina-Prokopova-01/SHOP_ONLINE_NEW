@@ -8,7 +8,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv("SECRET_KEY")
 
-DEBUG = True if os.getenv("DEBUG") == "True" else False
+# DEBUG = True if os.getenv("DEBUG") == "True" else False
+DEBUG = os.getenv("DEBUG") == 'True'
 
 ALLOWED_HOSTS = ["*"]
 
@@ -115,3 +116,5 @@ EMAIL_HOST_USER = 'M4twins@yandex.ru'
 EMAIL_HOST_PASSWORD = 'lfldwigmfnrdxkmy'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 SERVER_EMAIL = EMAIL_HOST_USER
+
+#reiman79!
