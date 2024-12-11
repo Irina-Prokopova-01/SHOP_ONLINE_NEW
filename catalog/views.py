@@ -5,6 +5,8 @@ from django.http import HttpResponseForbidden
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from .forms import ProductForm
+from django.views.decorators.cache import cache_page
+from django.utils.decorators import method_decorator
 from .service import category_products, get_product_list
 from django.views.generic import (
     ListView,
@@ -52,6 +54,7 @@ class ProductListView(LoginRequiredMixin, ListView):
         return context
 
 
+@method_decorator(cache_page(60 * 1), name='dispatch')
 class ProductDetailView(LoginRequiredMixin, DetailView):
     model = Product
 
@@ -89,6 +92,7 @@ class ProductUpdateView(LoginRequiredMixin, UpdateView):
 
     def get_success_url(self):
         return reverse_lazy("catalog:product_detail", kwargs={"pk": self.object.pk})
+
 
 
 class ProductDeleteView(LoginRequiredMixin, DeleteView):
