@@ -13,6 +13,7 @@ pillow = "^11.0.0"
 ipython = "^8.29.0"
 django = "4.2.2"
 django-registration = "^5.1.0"
+redis = "^5.2.1"
 
 
 [tool.poetry.group.lint.dependencies]
